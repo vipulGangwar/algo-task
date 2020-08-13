@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+</head>
+<body>
+
+
+{% if not request.user.is_authenticated %}
+
+<a href="signup/">SignUp</a>
+<br>
+<br>
+<a href="login/">Login</a><br><br><br>
+
+<p> Sorry, I have not enough time to design the html so please check all functionality and basic design. </p>
+<p>Thanks<br>
+Vipul Gangwar<br>
+vgangwar09@gmail.com</p>
+
+
+{% else %}
+
+<a href="logout/">Logout</a>  <br><br>
+
+
+<form method="post">
+	{% csrf_token %}
+
+{% for i in users %}
+
+<input type="checkbox" id="user" name="user" value="{{ i.id }}">
+<label for="vehicle1"> {{ i.username }}</label><br>
+
+{% endfor %}
+
+<input type="submit" name="submit" value="Submit">
+</form>
+
+
+{% endif %}
+
+</body>
+</html>
